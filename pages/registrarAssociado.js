@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Header from "../components/Header.js";
-import AssociadoRegister from "../components/registrarAssociado.js";
+import RegisterAssociate from "../components/RegistrarAssociado.js";
 
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ function App() {
 
     <Header />
 
-    <AssociadoRegister />
+    <RegisterAssociate />
 
     </div>
   );
