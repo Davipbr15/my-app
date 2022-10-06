@@ -25,7 +25,7 @@ const handleClickButton = () =>{
       
       Axios.post("http://localhost:3005/registerAssociate",{
         nomeCompletob:values.nomeCompletoI,
-        nacionalidadeb:values.nacionalidadeI,
+        /*nacionalidadeb:values.nacionalidadeI,
         naturalidadeb:values.naturalidadeI,
         cpfb:values.cpfI,
         dataDeNascimentob:values.dataDeNascimentoI,
@@ -36,27 +36,7 @@ const handleClickButton = () =>{
         enderecoPessoalb:values.enderecoPessoalI,
         numeroEnderecoPessoalb:values.numeroEnderecoPessoalI,
         complementoPessoalb:values.complementoPesssoalI,
-        bairroPessoalb:values.bairroPessoalI,
-        cidadeEstadoPessoalb:values.cidadeEstadoPessoalI,
-        emailPessoalb:values.emailPessoalI,
-        telefoneFixoPessoalb:values.telefoneFixoPessoalI,
-        celularPessoal:values.celularPessoalI,
-        razaoSocialb:values.razaoSocialI,
-        nomeFantasiab:values.nomeFantasiaI,
-        cnpjb:values.cnpjI,
-        numeroInscricaob:values.numeroInscricaoI,
-        enderecoSedeb:values.enderecoSedeI,
-        numeroSedeb:values.numeroSedeI,
-        complementoSedeb:values.complementoSedeI,
-        bairroSedeb:values.bairroSedeI,
-        cepSedeb:values.cepSedeI,
-        cidadeEstadoSedeb:values.cidadeEstadoSedeI,
-        emailProfissionalb:values.emailProfissionalI,
-        dataDeAberturab:values.dataDeAberturaI,
-        
-
-
-
+        bairroPessoalb:values.bairroPessoalI,*/   
       }).then((response)=>{
         console.log(response);
       })    
@@ -255,206 +235,6 @@ return(
 
 
 <div className="col-span-3">
-<label for="cepI" className="form-label inline-block mb-2 text-gray-700">
-CEP</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cepI"
-     placeholder="CEP"
-   />
-</div>
-
-
-<div className="col-span-3">
-<label for="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-gray-700">
-  Cidade e Estado</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cepI"
-     placeholder="Cidade e Estado"
-   />
-</div>
-
-
-<div className="col-span-3">
-<label for="emailPessoalI" className="form-label inline-block mb-2 text-gray-700">
-  E-mail Pessoal</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="emailPessoalI"
-     placeholder="E-mail"
-   />
-</div>
-
-
-<div className="col-span-3">
-<label for="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-gray-700">
-  Telefone Fixo</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="telefoneFixoPessoalI"
-     placeholder="Telefone Fixo"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="celularPessoalI" className="form-label inline-block mb-2 text-gray-700">
-  Celular</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="celularPessoalI"
-     placeholder="Celular"
-   />
-</div>
-
-<div className="mb-5">
-<h1 className="text-xl text-center text-black font-bold">Dados Profissionais</h1>
-</div>
-
-
-<div className="col-span-3">
-<label for="razaoSocialI" className="form-label inline-block mb-2 text-gray-700">
-  Razão Social</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="razaoSocialI"
-     placeholder="Razão Social"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="nomeFantasiaI" className="form-label inline-block mb-2 text-gray-700">
-  Nome Fantasia</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="nomeFantasiaI"
-     placeholder="Nome Fantasia"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="cnpjI" className="form-label inline-block mb-2 text-gray-700">
-  CNPJ</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cnpjI"
-     placeholder="CNPJ"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="numeroInscricaoI" className="form-label inline-block mb-2 text-gray-700">
-  Número de Inscrição</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="numeroInscricaoI"
-     placeholder="Número de Inscrição"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="enderecoSedeI" className="form-label inline-block mb-2 text-gray-700">
-  Endereço Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="enderecoSedeI"
-     placeholder="Endereço da Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="numeroSedeI" className="form-label inline-block mb-2 text-gray-700">
-  Número da Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="numeroSedeI"
-     placeholder="Número da Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="complementoSedeI" className="form-label inline-block mb-2 text-gray-700">
-  Complemento da Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="complementoSedeI"
-     placeholder="Complemento da Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="bairroSedeI" className="form-label inline-block mb-2 text-gray-700">
-  Bairro da Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="bairroSedeI"
-     placeholder="Bairro da Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="cepSedeI" className="form-label inline-block mb-2 text-gray-700">
-  CEP Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cepSedeI"
-     placeholder="CEP Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="cidadeEstadoSedeI" className="form-label inline-block mb-2 text-gray-700">
-  Cidade e Estado da Sede</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cidadeEstadoSedeI"
-     placeholder="Cidade e Estado da Sede"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="emailProfissionalI" className="form-label inline-block mb-2 text-gray-700">
-  Email Profissional</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="emailProfissionalI"
-     placeholder="Email Profissional"
-   />
-</div>
-
-<div className="col-span-3">
-<label for="dataDeAberturaI" className="form-label inline-block mb-2 text-gray-700">
-  Data de Abertura</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="dataDeAberturaI"
-     placeholder="Data de abertura"
-   />
-</div>
-
-
-<div className="col-span-3">
-<label for="quantidadePessoasOcupadasI" className="form-label inline-block mb-2 text-gray-700">
-  Quantidade de Pessoas Ocupadas</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="quantidadePessoasOcupadasI"
-     placeholder="Quantidade de Pessoas Ocupadas"
-   />
-</div>
-
-
-<div className="col-span-3">
-<label for="ramoDaAtividadeI" className="form-label inline-block mb-2 text-gray-700">
-  Ramo da Atividade</label>
-  <input type="text"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="ramoDaAtividadeI"
-     placeholder="Ramo da Atividade"
-   />
-</div>
-
-<div className="col-span-3">
         <button onClick={()=> handleClickButton()} type="reset" className="group bg-blue-600 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
 						<span className="absolute left-0 inset-y-0 flex items-center pl-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto fill-white" width="20pt" height="20pt" version="1.1" viewBox="0 0 700 700">
@@ -465,7 +245,7 @@ CEP</label>
               </svg>
 
 						</span>
-					  <h2 className="text-white">Concluir Registro</h2>
+					  <h2 class="text-white">Concluir Registro</h2>
 				</button>
   </div>
 
