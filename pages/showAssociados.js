@@ -12,7 +12,6 @@ function App() {
       Axios.get("http://localhost:3005/api/searchAssociate")
       .then((response) => {
           setAssociate(response.data)
-          console.log(response.data)
           console.log("Passou Daqui")
       })
       .catch(() => {

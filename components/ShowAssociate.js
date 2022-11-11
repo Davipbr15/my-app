@@ -7,7 +7,7 @@ function ShowAssociate(){
     const [associate, setAssociate ] = useState([]);
     useEffect(()=>{
 
-        Axios.get("http://localhost:3005/api/searchAssociate")
+        Axios.get("http://192.168.1.7:3005/api/searchAssociate")
         .then((response) => {
             setAssociate(response.data)
             console.log("Passou Daqui")
@@ -21,17 +21,9 @@ function ShowAssociate(){
     return( 
            
         <div className="flex">
-
+        
             <h2>Teste</h2>
-
-            {associate.map((associat, key) => {
-            return(
-                <h2 key={key} className="text-white">
-                    {associate.dadosPessoais}
-                </h2>
-            )
-            })}
-
+            
 
         </div>
 
