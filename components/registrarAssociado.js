@@ -1,60 +1,83 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Axios from "axios";
+import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-
-
 function App() {
 
-const [values, setValues] = useState();
 
-const handleChangeValues = (value) =>{
-    setValues((prevValue)=>({
-      //Arrow Function, é tipo uma função, so que rápida.
-      ...prevValue,
-      [value.target.name]: value.target.value,
-  }))
+
+
+const initialValue = {
+  nomeCompletob: '',
+  estadoCivilb: '',
+  nacionalidadeb: '',
+  naturalidadeb: '',
+  dataDeNascimentob: '',
+  cpfb: '',
+  profissaob: '',
+  documentoIdentificacaob: '',
+  numeroDocumentob: '',
+  orgaoExpeditorb: '',
+  enderecoPessoalb: '',
+  numeroEnderecoPessoalb: '',
+  complementoPessoalb: '',
+  bairroPessoalb: '',
+  cepb: '',
+  cidadeEstadoPessoalb: '',
+  emailPessoalb: '',
+  telefoneFixoPessoalb: '',
+  celularPessoalb: '',
+  razaoSocialb: '',
+  nomeFantasiab: '',
+  cnpjb: '',
+  numeroInscricaob: '',
+  numeroSedeb: '',
+  complementoSedeb: '',
+  bairroSedeb: '',
+  cepSedeb: '',
+  cidadeEstadoSedeb: '',
+  emailProfissionalb: '',
+  dataDeAbertura: '',
+  quantidadePessoasOcupadasb: '',
+  ramoDaAtividadeb: '',
+}
+
+const [values, setValues] = useState(initialValue);
+
+
+function onChange(ev) {
+
+  const {name, value} = ev.target;
+
+  console.log({name, value});
+
+  setValues({ ...values, [name]: value });
+  
 };
 
-
-const handleClickButton = () =>{
-
-    if (window.confirm("Você deseja realmente registrar este associado?")) {
+function onSubmit(ev){
+  ev.preventDefault();
+                      
+  if (window.confirm("Você deseja realmente registrar este associado?")) {
      
-      
-      Axios.post("http://localhost:3005/registerAssociate",{
-        nomeCompletob:values.nomeCompletoI,
-        /*nacionalidadeb:values.nacionalidadeI,
-        naturalidadeb:values.naturalidadeI,
-        cpfb:values.cpfI,
-        dataDeNascimentob:values.dataDeNascimentoI,
-        profissaob:values.profissaoI,
-        documentoIdentificacaob:values.documentoIdentificacaoI,
-        numeroDocumentob:values.numeroDocumentoI,
-        orgaoExpeditorb:values.orgaoExpeditor,
-        enderecoPessoalb:values.enderecoPessoalI,
-        numeroEnderecoPessoalb:values.numeroEnderecoPessoalI,
-        complementoPessoalb:values.complementoPesssoalI,
-        bairroPessoalb:values.bairroPessoalI,*/   
-      }).then((response)=>{
-        console.log(response);
-      })    
+    Axios.post('http://localhost:3005/api/registerAssociate', values)
+    .then((response) => {
 
-      alert("Registrado com Sucesso!"); 
+    });
 
-    } else {
+    window.alert(values.nomeCompletob + " registrado com sucesso!")
 
-    }
-
-
+  } else {}
 }
+
 
 return(
 
 <div className="App">
 
-<form  action="#" method="POST" className="block p-5 rounded-lg justify-self-center mx-auto shadow-2xl bg-white max-w-2xl">
+<form  action="#" onSubmit={onSubmit} method="POST" className="block p-5 rounded-lg justify-self-center mx-auto shadow-2xl bg-white max-w-2xl">
 
 <div className="mb-5">
 <h1 className="text-xl text-center text-black font-bold">Dados Pessoais</h1>
@@ -63,62 +86,88 @@ return(
 <div className="grid grid-cols-3 gap-5">
 
 
+
+
+
 <div className="col-span-3">
-  <label for="nomeCompletoI" className="form-label inline-block mb-2 text-gray-700">Nome completo</label>
+  <label htmlFor="nomeCompletoI" className="form-label inline-block mb-2 text-gray-700">Nome completo</label>
   <input type="text"
+    name="nomeCompletob"
+    required
     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
     id="nomeCompletoI"
-    onChange={handleChangeValues}
+    onChange={onChange}
     placeholder="Nome Completo"
   />
 </div>
 
-
-
-
-<div className="">
-  <label for="estado" className="form-label inline-block mb-2 text-gray-700">Estado Civil</label>
-    <select id="estado" name="estado" size="1" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-      <option value="disponivel">Solteiro(a)</option>
-      <option value="casado">Casado(a)</option>
-      <option value="viuvo">Viúvo(a)</option>
-      <option value="separado">Separado(a)</option>
-      <option value="divorciado">Divorciado(a)</option>
-    </select>
+<div className="col-span-3">
+  <label htmlFor="estadoCivilI" className="form-label inline-block mb-2 text-gray-700">Estado Civil</label>
+  <input type="text"
+    name="estadoCivilb"
+    required
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="estadoCivilI"
+    onChange={onChange}
+    placeholder="Estado Civil"
+  />
 </div>
 
 
-
-
-
 <div className="col-span-3">
-  <label for="nacionalidadeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="nacionalidadeI" className="form-label inline-block mb-2 text-gray-700">
     Nacionalidade</label>
     <input type="text"
+       name="nacionalidadeb"
+       required
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
        id="nacionalidadeI"
+       onChange={onChange}
        placeholder="Nacionalidade"
      />
 </div>
 
 <div className="col-span-3">
-<label for="naturalidadeI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="naturalidadeI" className="form-label inline-block mb-2 text-gray-700">
   Naturalidade</label>
   <input type="text"
+     name='naturalidadeb'
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="naturalidadeI"
+     onChange={onChange}
      placeholder="Naturalidade"
    />
 </div> 
 
 
 
+<div className="col-span-3">
+<label htmlFor="dataDeNascimentoI" className="form-label inline-block mb-2 text-gray-700">
+  Data de Nascimento</label>
+  <input type="date"
+     name="dataDeNascimentob"
+     max="2004-12-12"
+     min="1910-05-01"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="dataDeNascimentoI"
+     onChange={onChange}
+     placeholder="Data de Nascimento"
+   />
+</div>
+
+
+
 <div className="col-span-2">
-<label for="cpfI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="cpfI" className="form-label inline-block mb-2 text-gray-700">
   CPF</label>
   <input type="text"
+     name='cpfb'
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="cpfI"
+     onChange={onChange}
      placeholder="CPF"
    />
 </div>
@@ -126,25 +175,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="dataDeNascimentoI" className="form-label inline-block mb-2 text-gray-700">
-  Data de Nascimento</label>
-  <input type="date"
-     max="2004-09-13"
-     min="1910-05-01"
-     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="dataDeNascimentoI"
-     placeholder="Data de Nascimento"
-   />
-</div>
-
-
-
-<div className="col-span-3">
-<label for="profissaoI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="profissaoI" className="form-label inline-block mb-2 text-gray-700">
   Profissão</label>
   <input type="text"
+     name="profissaob"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="profissaoI"
+     onChange={onChange}
      placeholder="Profissão"
    />
 </div>
@@ -152,11 +190,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="documentoIdentificacaoI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="documentoIdentificacaoI" className="form-label inline-block mb-2 text-gray-700">
   Documento de identificação</label>
   <input type="text"
+     name="documentoIdentificacaob"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="documentoIdentificacaoI"
+     onChange={onChange}
      placeholder="Doc. de Identificação"
    />
 </div>
@@ -164,11 +205,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="numeroDocumentoI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="numeroDocumentoI" className="form-label inline-block mb-2 text-gray-700">
   Nº do Documento</label>
   <input type="text"
+     name="numeroDocumentob"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroDocumentoI"
+     onChange={onChange}
      placeholder="Número do Documento"
    />
 </div>
@@ -176,11 +220,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="orgaoExpeditorI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="orgaoExpeditorI" className="form-label inline-block mb-2 text-gray-700">
   Orgão Expeditor</label>
   <input type="text"
+     name="orgaoExpeditorb"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="orgaoExpeditorI"
+     onChange={onChange}
      placeholder="Orgão Expeditor"
    />
 </div>
@@ -188,11 +235,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="enderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="enderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
   Endereço</label>
   <input type="text"
+     name="enderecoPessoalb"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="enderecoPessoalI"
+     onChange={onChange}
      placeholder="Endereço Pessoal"
    />
 </div>
@@ -200,11 +250,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="numeroEnderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="numeroEnderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
   Nº Endereço</label>
   <input type="text"
+     name="numeroEnderecoPessoalb"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroEnderecoPesssoalI"
+     onChange={onChange}
      placeholder="Número Endereço"
    />
 </div>
@@ -212,11 +265,14 @@ return(
 
 
 <div className="col-span-3">
-<label for="complementoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="complementoPessoalI" className="form-label inline-block mb-2 text-gray-700">
   Complemento</label>
   <input type="text"
+     name="complementoPessoalb"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="complementoPessoalI"
+     onChange={onChange}
      placeholder="Complemento Endereço"
    />
 </div>
@@ -224,18 +280,283 @@ return(
 
 
 <div className="col-span-3">
-<label for="bairroPessoalI" className="form-label inline-block mb-2 text-gray-700">
+<label htmlFor="bairroPessoalI" className="form-label inline-block mb-2 text-gray-700">
   Bairro</label>
   <input type="text"
+     name="bairroPessoalb"
+     required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="bairroPessoalI"
+     onChange={onChange}
      placeholder="Bairro"
    />
 </div>
 
 
+
 <div className="col-span-3">
-        <button onClick={()=> handleClickButton()} type="reset" className="group bg-blue-600 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+<label htmlFor="cepI" className="form-label inline-block mb-2 text-gray-700">
+  CEP</label>
+  <input type="text"
+     name="cepb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="cepI"
+     onChange={onChange}
+     placeholder="CEP"
+   />
+</div>
+
+
+<div className="col-span-3">
+<label htmlFor="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  cidade e estado pessoal</label>
+  <input type="text"
+     name="cidadeEstadoPessoalb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="cidadeEstadoPessoalI"
+     onChange={onChange}
+     placeholder="Cidade e estado pessoal"
+   />
+</div>
+
+
+
+<div className="col-span-3">
+<label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  e-mail pessoal</label>
+  <input type="text"
+     name="emailPessoalb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="emailPessoalI"
+     onChange={onChange}
+     placeholder="E-mail pessoal"
+   />
+</div>
+
+
+
+<div className="col-span-3">
+<label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  telefone fixo pessoal</label>
+  <input type="text"
+     name="telefoneFixoPessoalb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="telefoneFixoPessoalI"
+     onChange={onChange}
+     placeholder="Telefone fixo pessoal"
+   />
+</div>
+
+
+
+
+<div className="col-span-3">
+<label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  celular pessoal</label>
+  <input type="tel"
+     name="celularPessoalb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="celularPessoalI"
+      maxLength="15"
+     onChange={onChange}
+     placeholder="Celular pessoal"
+   />
+</div>
+<br></br>
+<div className="mb-5">
+<h1 className="text-xl text-center text-black font-bold">Dados Profissonal</h1>
+</div>
+<div className="col-span-3">
+<label htmlFor="razaoSocialI" className="form-label inline-block mb-2 text-gray-700">
+  Razão Social</label>
+  <input type="text"
+     name="razaoSocialb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="razaoSocialI"
+     onChange={onChange}
+     placeholder="Razão social"
+   />
+</div>
+
+
+<div className="col-span-3">
+<label htmlFor="nomeFantasiaI" className="form-label inline-block mb-2 text-gray-700">
+  Nome Fantasia</label>
+  <input type="text"
+     name="nomeFantasiab"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="nomeFantasiaI"
+     onChange={onChange}
+     placeholder="Nome fantasia"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="cnpjI" className="form-label inline-block mb-2 text-gray-700">
+  CNPJ</label>
+  <input type="text"
+     name="cnpjb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="cnpjI"
+     onChange={onChange}
+     placeholder="CNPJ"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-gray-700">
+  Número de Inscrição</label>
+  <input type="text"
+     name="numeroInscricaob"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="numeroInscricaoI"
+     onChange={onChange}
+     placeholder="Número de inscrição"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="enderecoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  Endereço Sede</label>
+  <input type="text"
+     name="enderecoSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="enderecoSedeI"
+     onChange={onChange}
+     placeholder="Endereço sede"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="numeroSedeI" className="form-label inline-block mb-2 text-gray-700">
+  Número Sede</label>
+  <input type="text"
+     name="numeroSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="numeroSedeI"
+     onChange={onChange}
+     placeholder="Número sede"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="complementoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  Complemento Sede</label>
+  <input type="text"
+     name="complementoSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="complementoSedeI"
+     onChange={onChange}
+     placeholder="Complemento sede"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="bairroSedeI" className="form-label inline-block mb-2 text-gray-700">
+  Bairro Sede</label>
+  <input type="text"
+     name="bairroSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="bairroSedeI"
+     onChange={onChange}
+     placeholder="Bairro sede"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-gray-700">
+  CEP Sede</label>
+  <input type="text"
+     name="cepSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="cepSedeI"
+     onChange={onChange}
+     placeholder="CEP sede"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="cidadeEstadoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  Cidade e Estado da Sede</label>
+  <input type="text"
+     name="cidadeEstadoSedeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="cidadeEstadoSedeI"
+     onChange={onChange}
+     placeholder="Cidade e estado da sede"
+   />
+</div>
+
+
+<div className="col-span-3">
+<label htmlFor="emailProfissionalI" className="form-label inline-block mb-2 text-gray-700">
+  Email Profissional</label>
+  <input type="text"
+     name="emailProfissionalb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="emailProfissionalI"
+     onChange={onChange}
+     placeholder="Email profissional"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="dataDeAberturaI" className="form-label inline-block mb-2 text-gray-700">
+  Data de abertura</label>
+  <input type="text"
+     name="dataDeAberturab"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="dataDeAberturaI"
+     onChange={onChange}
+     placeholder="Data de abertura"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="quantidadePessoasOcupadasI" className="form-label inline-block mb-2 text-gray-700">
+  Quantidade de Pessoas Ocupadas</label>
+  <input type="text"
+     name="quantidadePessoasOcupadasb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="quantidadePessoasOcupadasI"
+     onChange={onChange}
+     placeholder="Quantidade de pessoas ocupadas"
+   />
+</div>
+
+<div className="col-span-3">
+<label htmlFor="ramoDaAtividadeI" className="form-label inline-block mb-2 text-gray-700">
+  Ramo da Atividade</label>
+  <input type="text"
+     name="ramoDaAtividadeb"
+     required
+     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     id="ramoDaAtividadeI"
+     onChange={onChange}
+     placeholder="Ramo da atividade"
+   />
+</div>
+
+<div className="col-span-3">
+        <button type="submit" className="group bg-blue-600 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
 						<span className="absolute left-0 inset-y-0 flex items-center pl-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto fill-white" width="20pt" height="20pt" version="1.1" viewBox="0 0 700 700">
               <g>
@@ -245,7 +566,7 @@ return(
               </svg>
 
 						</span>
-					  <h2 class="text-white">Concluir Registro</h2>
+					  <h2 className="text-white">Concluir Registro</h2>
 				</button>
   </div>
 

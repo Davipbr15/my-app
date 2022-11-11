@@ -9,8 +9,9 @@ import Link from "next/link";
 function App() {
 
   return (
-    <div className="App">
 
+    <div className="App">
+    
     <Header />
 
     <RegisterAssociate />

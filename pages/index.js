@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Header from "../components/Header.js";
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from "next/link";
@@ -8,9 +9,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       
-      <Link href="/registrarAssociado">PRODUTOS</Link>
+    <Header />
 
     </div>
   )
