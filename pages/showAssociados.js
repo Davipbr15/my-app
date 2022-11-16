@@ -7,9 +7,6 @@ import axios from 'axios';
 //
 function App() {
 
-  const [associate, setAssociate ] = useState([]);
-
-
   return (
 
     <div className="App">
@@ -17,9 +14,6 @@ function App() {
     <Header />
 
     <ShowAssociate />
-
-
-    
 
     </div>
   );

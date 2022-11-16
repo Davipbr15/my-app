@@ -1,40 +1,41 @@
 import Link from 'next/link';
-import Axios from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from 'react';
 
 function ShowAssociate(){
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
-    const [associate, setAssociate ] = useState([]);
-    useEffect(()=>{
 
-        const fetchdata = async() =>{
-          const data = await Axios.get("http://localhost:3005/api/searchAssociate")
-          setAssociate(data);
-          console.log(data.data)
-        };
-    
-        fetchdata();
-    
-    
-      },[])
+    const [assc, setAssociate ] = useState([]);
+    useEffect(()=>{
+        axios.get("http://localhost:3005/api/searchAssociate")
+        .then(response => {
+            setAssociate(response.data);
+        })
+
+      },[]);
+
     return( 
            
-        <div className="flex">
-        
-            <h2>Teste</h2>
+        <div className="App flex">
+            <h2>Testes</h2>
+            {assc.map((ascData, index) => {
+                return(
+                <div key={index} className="wrap flex">
+                    <p>A: {this.state.assc.dadosPessoais.cep}</p>
+                </div>
+                );
+            })}
 
-            {
-                associate && associate.data?.map((associate) =>{
 
-                    <h1
-                    >
 
-                    </h1>
-
-                    })
-            }
-            
-
+            {/* {asc.map((as, index) => {
+                return(
+                <div key={index}>
+                <h1>
+                    {as.dadosPessoais}
+                </h1>
+                </div>
+            );
+            })} */}
         </div>
 
     )
