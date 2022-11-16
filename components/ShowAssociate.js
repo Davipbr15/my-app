@@ -7,22 +7,32 @@ function ShowAssociate(){
     const [associate, setAssociate ] = useState([]);
     useEffect(()=>{
 
-        Axios.get("http://192.168.1.7:3005/api/searchAssociate")
-        .then((response) => {
-            setAssociate(response.data)
-            console.log("Passou Daqui")
-        })
-        .catch(() => {
-            console.log("Erro")
-        })
-
-
-    },[])
+        const fetchdata = async() =>{
+          const data = await Axios.get("http://localhost:3005/api/searchAssociate")
+          setAssociate(data);
+          console.log(data.data)
+        };
+    
+        fetchdata();
+    
+    
+      },[])
     return( 
            
         <div className="flex">
         
             <h2>Teste</h2>
+
+            {
+                associate && associate.data?.map((associate) =>{
+
+                    <h1
+                    >
+
+                    </h1>
+
+                    })
+            }
             
 
         </div>
