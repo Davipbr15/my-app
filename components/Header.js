@@ -30,6 +30,22 @@ function Header(){
             Ver
             </a>
         </Link>
+        <Link href="/loginUser">
+            <a
+              href="/"
+              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+            >
+            Login
+            </a>
+        </Link>
+        <Link href="/registerUser">
+            <a
+              href="/"
+              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+            >
+            Register
+            </a>
+        </Link>
 
         </div>
 

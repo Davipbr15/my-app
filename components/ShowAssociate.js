@@ -17,6 +17,8 @@ function ShowAssociate(){
            
         <div className="App">
             <p className="text-xl">Testes</p>
+
+            <br></br>
             <div className="grid justify-center">
             {assc.map((ascData, index) => {
                 return(
