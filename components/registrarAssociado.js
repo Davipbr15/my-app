@@ -62,7 +62,7 @@ function onSubmit(ev){
                       
   if (window.confirm("Você deseja realmente registrar este associado?")) {
      
-    Axios.post('http://192.168.1.7:3005/api/registerAssociate', values)
+    Axios.post('http://192.168.1.6:3005/api/registerAssociate', values)
     .then((response) => {
 
     });
