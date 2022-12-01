@@ -5,11 +5,11 @@ function Header(){
       const [navbarOpen, setNavbarOpen] = React.useState(false);
     return( 
            
-        <div className="flex">
+        <div className="flex bg-gray-700">
         <Link href="/">
             <a
               href="/"
-              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
             Index
             </a>
@@ -17,7 +17,7 @@ function Header(){
         <Link href="/registrarAssociado">
             <a
               href="/"
-              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
             Registrar
             </a>
@@ -25,7 +25,7 @@ function Header(){
         <Link href="/showAssociados">
             <a
               href="/"
-              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
             Ver
             </a>
@@ -33,7 +33,7 @@ function Header(){
         <Link href="/loginUser">
             <a
               href="/"
-              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
             Login
             </a>
@@ -41,7 +41,7 @@ function Header(){
         <Link href="/registerUser">
             <a
               href="/"
-              className="font-medium text-gray-600 hover:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
             Register
             </a>

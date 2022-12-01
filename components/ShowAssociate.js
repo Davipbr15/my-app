@@ -4,9 +4,23 @@ import React, { useEffect, useState } from 'react';
 
 function ShowAssociate(){
 
+    const [ip, setIP] = useState('');
+    
+    //creating function to load ip address from the API
+    const getData = async () => {
+      const res = await axios.get('https://geolocation-db.com/json/')
+      setIP(res.data.IPv4)
+    }
+    
+    useEffect( () => {
+      //passing getData method to the lifecycle method
+      getData()
+  
+    }, [])
+
     const [assc, setAssociate ] = useState([]);
     useEffect(()=>{
-        axios.get("http://192.168.1.6:3005/api/searchAssociate")
+        axios.get("http://localhost:3005/api/searchAssociate")
         .then(response => {
             setAssociate(response.data);
         })
@@ -17,7 +31,7 @@ function ShowAssociate(){
            
         <div className="App">
             <p className="text-xl">Testes</p>
-
+            <h1>{ip}</h1>
             <br></br>
             <div className="grid justify-center">
             {assc.map((ascData, index) => {
@@ -25,6 +39,8 @@ function ShowAssociate(){
                 <div key={index} className="block justify-center max-w-2xl p-6 m-5 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h1 className="text-2xl text-center">{ascData.dadosProfissionais?.nomeFantasia}</h1>
                     <b className="">ID do Associado: {ascData.associateId}</b>
+                    <br></br>
+                    <b className="">Pasta: {ascData.numeroDaPasta}</b>
                     <hr></hr>
                     <div>
                     <b className="text-2xl">Dados Pessoais</b>

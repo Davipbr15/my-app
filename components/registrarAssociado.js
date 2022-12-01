@@ -42,6 +42,19 @@ const initialValue = {
   dataDeAbertura: '',
   quantidadePessoasOcupadasb: '',
   ramoDaAtividadeb: '',
+  numeroDaPastab: '',
+  validadeAlvarab: '',
+  areaM2Funcionamentob: '',
+  numeroInscricaoMunicipalb:'',
+  dataDeEmissaoBombeirosb:'',
+  dataDeValidadeBombeirosb:'',
+  areaM2Bombeirosb:'',
+  dataDeValidadeVigilanciab:'',
+  inscricaoVigilanciaSanitariab:'',
+  dataDeEmissaoLicencaAmbientalb:'',
+  dataDeValidadeLicencaAmbientalb:'',
+  tipoContratob:'',
+  baixadab:'',
 }
 
 const [values, setValues] = useState(initialValue);
@@ -62,7 +75,7 @@ function onSubmit(ev){
                       
   if (window.confirm("Você deseja realmente registrar este associado?")) {
      
-    Axios.post('http://192.168.1.6:3005/api/registerAssociate', values)
+    Axios.post('http://localhost:3005/api/registerAssociate', values)
     .then((response) => {
 
     });
@@ -75,15 +88,15 @@ function onSubmit(ev){
 
 return(
 
-<div className="App">
+<div className="App bg-gray-800">
 
-<form  action="#" onSubmit={onSubmit} method="POST" className="block p-5 rounded-lg justify-self-center mx-auto shadow-2xl bg-white max-w-2xl">
+<form  action="#" onSubmit={onSubmit} method="POST" className="block p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-white max-w-2xl">
 
 <div className="mb-5">
 <h1 className="text-xl text-center text-black font-bold">Dados Pessoais</h1>
 </div>
 
-<div className="grid grid-cols-3 gap-5">
+<div className="grid grid-cols-3 gap-6">
 
 
 
@@ -407,7 +420,7 @@ return(
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="cnpjI"
      onChange={onChange}
-     placeholder="CNPJ"
+     placeholder="__.___.___/____-__"
    />
 </div>
 
@@ -519,13 +532,13 @@ return(
 <div className="col-span-3">
 <label htmlFor="dataDeAberturaI" className="form-label inline-block mb-2 text-gray-700">
   Data de abertura</label>
-  <input type="text"
+  <input type="date"
      name="dataDeAberturab"
      required
      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
      id="dataDeAberturaI"
      onChange={onChange}
-     placeholder="Data de abertura"
+     placeholder="Data de Abertura"
    />
 </div>
 
@@ -554,6 +567,199 @@ return(
      placeholder="Ramo da atividade"
    />
 </div>
+
+<div className="col-span-3">
+  <label htmlFor="numeroDaPastab" className="form-label inline-block mb-2 text-gray-700">Número da Pasta</label>
+  <input type="text"
+    name="numeroDaPastab"
+    required
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="numeroDaPastaI"
+    onChange={onChange}
+    placeholder="Número da Pasta"
+  />
+</div>
+
+<br></br>
+
+<div className="mb-5">
+<h1 className="text-black font-bold text-center text-xl whitespace-nowrap">Pasta de Documentos</h1>
+</div>
+
+<br></br>
+
+<h1 className="text-black text-center font-bold whitespace-nowrap">Alvará de Funcionamento - </h1>
+
+
+<div className="col-span-3">
+  <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-gray-700">Validade</label>
+  <input type="text"
+    name="validadeAlvarab"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="validadeAlvaraI"
+    onChange={onChange}
+    placeholder="Validade Alvará"
+  />
+</div>
+<div className="col-span-3">
+  <label htmlFor="areaM2Funcionamentob" className="form-label inline-block mb-2 text-gray-700">
+    Área M²
+  </label>
+  <input type="text"
+    name="areaM2Funcionamentob"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="areaM2FuncionamentoI"
+    onChange={onChange}
+    placeholder="Área M²"
+  />
+</div>
+<div className="col-span-3">
+  <label htmlFor="numeroInscricaoMunicipalb" className="form-label inline-block mb-2 text-gray-700">
+    Número da Inscrição Municipal
+  </label>
+  <input type="text"
+    name="numeroInscricaoMunicipalb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="numeroInscricaoMunicipalI"
+    onChange={onChange}
+    placeholder="Número de Inscrição Municipal"
+  />
+</div>
+
+
+<h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Certificado Conformidade Corpo de Bombeiros - </h1>
+
+<div className="col-span-3">
+  <label htmlFor="dataDeEmissaoBombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    Data de Emissão
+  </label>
+  <input type="date"
+    name="dataDeEmissaoBombeirosb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="dataDeEmissaoBombeirosI"
+    onChange={onChange}
+    placeholder="Data de Emissão"
+  />
+</div>
+<div className="col-span-3">
+  <label htmlFor="dataDeValidadeBombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    Data de Validade
+  </label>
+  <input type="date"
+    name="dataDeValidadeBombeirosb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="dataDeValidadeBombeirosI"
+    onChange={onChange}
+    placeholder="Data de Validade"
+  />
+</div>
+
+<div className="col-span-3">
+  <label htmlFor="areaM2Bombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    Área M²
+  </label>
+  <input type="text"
+    name="areaM2Bombeirosb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="areaM2BombeirosI"
+    onChange={onChange}
+    placeholder="Área M²"
+  />
+</div>
+
+<h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Alvará de Vigilância Sanitária - </h1>
+
+<div className="col-span-3">
+  <label htmlFor="dataDeValidadeVigilanciab" className="form-label inline-block mb-2 text-gray-700">
+    Data de Validade da Vigilância Sanitária
+  </label>
+  <input type="date"
+    name="dataDeValidadeVigilanciab"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="dataDeValidadeVigilanciaI"
+    onChange={onChange}
+    placeholder="Data de Validade"
+  />
+</div>
+
+<div className="col-span-3">
+  <label htmlFor="inscricaoVigilanciaSanitariab" className="form-label inline-block mb-2 text-gray-700">
+    Inscrição Vigilância Sanitária
+  </label>
+  <input type="text"
+    name="inscricaoVigilanciaSanitariab"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="inscricaoVigilanciaSanitariaI"
+    onChange={onChange}
+    placeholder="Inscrição Vigilância Sanitária"
+  />
+</div>
+
+<h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Licença Ambiental - </h1>
+
+
+<div className="col-span-3">
+  <label htmlFor="dataDeEmissaoLicencaAmbientalb" className="form-label inline-block mb-2 text-gray-700">
+    Data de Emissão
+  </label>
+  <input type="date"
+    name="dataDeEmissaoLicencaAmbientalb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="dataDeEmissaoLicencaAmbientalI"
+    onChange={onChange}
+    placeholder="Data de Emissão da Licença Ambiental"
+  />
+</div>
+
+<div className="col-span-3">
+  <label htmlFor="dataDeValidadeLicencaAmbientalb" className="form-label inline-block mb-2 text-gray-700">
+    Data de Validade da Licença Ambiental
+  </label>
+  <input type="date"
+    name="dataDeValidadeLicencaAmbientalb"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="dataDeValidadeLicencaAmbientalI"
+    onChange={onChange}
+    placeholder="Data de Validade da Licença Ambiental"
+  />
+</div>
+
+<h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Contrato de Imóvel - </h1>
+
+
+<div className="col-span-3">
+  <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-gray-700">
+    Tipo de Contrato
+  </label>
+  <input type="text"
+    name="tipoContratob"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="tipoContratoI"
+    onChange={onChange}
+    placeholder="Tipo de Contrato"
+  />
+</div>
+
+<h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Declaração de Baixa de Inscrição Municipal  - </h1>
+
+
+<div className="col-span-3">
+  <label htmlFor="baixadab" className="form-label inline-block mb-2 text-gray-700">
+    Baixada
+  </label>
+  <input type="text"
+    name="baixadab"
+    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="baixadaI"
+    onChange={onChange}
+    placeholder="Baixada"
+  />
+</div>
+
+
+
+
+
 
 <div className="col-span-3">
         <button type="submit" className="group bg-blue-600 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
